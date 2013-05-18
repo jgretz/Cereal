@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8C6B4C8B1747BE8A0023ADCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6B4C8A1747BE8A0023ADCF /* Foundation.framework */; };
-		8C6B4C901747BE8A0023ADCF /* Cereal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C6B4C8F1747BE8A0023ADCF /* Cereal.h */; };
-		8C6B4C921747BE8A0023ADCF /* Cereal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B4C911747BE8A0023ADCF /* Cereal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,7 +17,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				8C6B4C901747BE8A0023ADCF /* Cereal.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -29,8 +26,6 @@
 		8C6B4C871747BE8A0023ADCF /* libCereal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCereal.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6B4C8A1747BE8A0023ADCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8C6B4C8E1747BE8A0023ADCF /* Cereal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cereal-Prefix.pch"; sourceTree = "<group>"; };
-		8C6B4C8F1747BE8A0023ADCF /* Cereal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cereal.h; sourceTree = "<group>"; };
-		8C6B4C911747BE8A0023ADCF /* Cereal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cereal.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +68,6 @@
 		8C6B4C8C1747BE8A0023ADCF /* Cereal */ = {
 			isa = PBXGroup;
 			children = (
-				8C6B4C8F1747BE8A0023ADCF /* Cereal.h */,
-				8C6B4C911747BE8A0023ADCF /* Cereal.m */,
 				8C6B4C8D1747BE8A0023ADCF /* Supporting Files */,
 			);
 			path = Cereal;
@@ -139,7 +132,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C6B4C921747BE8A0023ADCF /* Cereal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
