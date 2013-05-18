@@ -6,7 +6,8 @@ A lightweight objective-c serialization framework
 Dependencies
 ======
 
-1.  CoreMeta (https://github.com/jgretz/CoreMeta)
+1.  CoreMeta
+	*  https://github.com/jgretz/CoreMeta
 2.  libxml
 	*  add -lxml2 to other linker flags 
 
