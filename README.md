@@ -1,15 +1,14 @@
 Cereal
 ======
 
-A lightweight objective-c serialization framework
+A lightweight objective-c serialization framework. Support JSON or XML to objects. 
 
 Dependencies
 ======
 
-1.  CoreMeta
-	*  https://github.com/jgretz/CoreMeta
-2.  libxml
-	*  add -lxml2 to other linker flags 
+1. [CoreMeta](https://github.com/jgretz/CoreMeta)
+2. libxml
+	*  also add -lxml2 to other linker flags 
 
 License
 ======
