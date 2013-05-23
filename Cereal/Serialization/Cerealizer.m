@@ -171,8 +171,10 @@
             continue;
 
         Class propertyClassType = propertyInfo.type;
-        if (propertyInfo.valueType)
+        if (propertyInfo.valueType) {
+            [object setValue: value forKey: propertyInfo.name];
             continue;
+        }
 
         if (!propertyInfo.valueType) {
             if (propertyClassType == [NSArray class] || [propertyClassType isSubclassOfClass: [NSArray class]]) {
