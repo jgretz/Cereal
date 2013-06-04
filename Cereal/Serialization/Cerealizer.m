@@ -207,7 +207,7 @@
                 if (override)
                     propertyClassType = override;
 
-                value = [[Container sharedContainer] objectForClass: [self class]];
+                value = [[Container sharedContainer] objectForClass: propertyClassType];
                 [self fillObject: value fromDictionary: dict];
             }
 
