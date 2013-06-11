@@ -23,4 +23,5 @@
 
 @interface JsonCerealizer : Cerealizer
 
+-(id) JSONValue: (NSString*) json;
 @end
