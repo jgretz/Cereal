@@ -25,9 +25,9 @@
 @implementation JsonCerealizer
 
 #pragma mark Serialize
--(NSString*) toString: (id) object {
+-(NSString*) toString: (id) object {    
     if (object == nil)
-        return @"";
+        return nil;
     
     id jsonObject = [self toObject: object];
     if (![NSJSONSerialization isValidJSONObject: jsonObject]) {
