@@ -95,7 +95,10 @@
         else if ([value conformsToProtocol: @protocol(NSObject)])
             value = [self toObject: value];
 
-        [dictionary setValue: value forKey: propertyInfo.name];
+        NSString* valueKey = propertyInfo.name;
+        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
+            valueKey = [object valueKeyForPropertyName: propertyInfo.name];
+        [dictionary setValue: value forKey: valueKey];
     }
     return dictionary;
 }
