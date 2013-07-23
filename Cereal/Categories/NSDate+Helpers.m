@@ -287,6 +287,13 @@ typedef NSUInteger AdjustType;
     return YES;
 }
 
+-(BOOL) beforeDay: (NSDate*) comp {
+    return self.daysSince1970 < comp.daysSince1970;
+}
+
+-(BOOL) afterDay: (NSDate*) comp {
+    return self.daysSince1970 > comp.daysSince1970;
+}
 
 -(BOOL) isBetween: (NSDate*) date1 and: (NSDate*) date2 {
     if ([self compare: date1] < 0)

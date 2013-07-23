@@ -48,6 +48,9 @@
 -(BOOL) sameMonthAs: (NSDate*) comp;
 -(BOOL) sameYearAs: (NSDate*) comp;
 
+-(BOOL) beforeDay: (NSDate*) comp;
+-(BOOL) afterDay: (NSDate*) comp;
+
 -(BOOL) isBetween: (NSDate*) date1 and: (NSDate*) date2;
 -(BOOL) isDateBetween: (NSDate*) date1 and: (NSDate*) date2;
 
