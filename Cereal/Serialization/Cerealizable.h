@@ -32,4 +32,8 @@
 -(BOOL) serializePropertyWithName: (NSString*) name;
 -(NSString*) valueKeyForPropertyName: (NSString*) name;
 
+-(BOOL) overrideSerializeValueForPropertyName: (NSString*) name;
+-(id) serializeValueForPropertyName: (NSString*) name;
+-(void) deserializeValue: (id) value forPropertyName: (NSString*) name;
+
 @end

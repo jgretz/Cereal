@@ -74,9 +74,21 @@
 
     // object
     for (PropertyInfo* propertyInfo in [Reflection propertiesForClass: [object class] includeInheritance: YES]) {
+        if (!object)
+            return dictionary;
+        
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(serializePropertyWithName:)]) {
             if (![object serializePropertyWithName: propertyInfo.name])
                 continue;
+        }
+        
+        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(serializeValueForPropertyName:)]) {
+            if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
+                NSObject* serializedObject = [object serializeValueForPropertyName: propertyInfo.name];
+                if(serializedObject)
+                    [dictionary setObject:serializedObject forKey: propertyInfo.name];
+                continue;
+            }
         }
 
         id value = [object valueForKey: propertyInfo.name];
@@ -172,6 +184,14 @@
         id value = [dictionary objectForKey: valueKey];
         if (!value || [value isKindOfClass: [NSNull class]])
             continue;
+        
+        // provide override on object level
+        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(deserializeValue:forPropertyName:)]) {
+            if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
+                [object deserializeValue: value forPropertyName: propertyInfo.name];
+                continue;
+            }
+        }
 
         Class propertyClassType = propertyInfo.type;
         if (propertyInfo.valueType) {
