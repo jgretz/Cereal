@@ -33,7 +33,7 @@ static UIColor* calculateColor(float r, float g, float b) {
 };
 
 -(NSString*) toString {
-    float red, green, blue, alpha;
+    CGFloat red, green, blue, alpha;
     [self getRed: &red green: &green blue: &blue alpha: &alpha];
 
     return [NSString stringWithFormat: @"%f,%f,%f,%f", red, green, blue, alpha];
@@ -72,7 +72,7 @@ static UIColor* calculateColor(float r, float g, float b) {
 }
 
 -(NSString*) toHex {
-    float red, green, blue, alpha;
+    CGFloat red, green, blue, alpha;
     [self getRed: &red green: &green blue: &blue alpha: &alpha];
 
     return [NSString stringWithFormat: @"%02X%02X%02X", (uint) red, (uint) green, (uint) blue];

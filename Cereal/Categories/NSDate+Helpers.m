@@ -58,9 +58,9 @@ typedef NSUInteger AdjustType;
 	NSDateComponents* c = [self components];
 	
 	// get parts
-	int day = [c day];
-	int month = [c month];
-	int year = [c year];
+	int day = (int) [c day];
+	int month = (int) [c month];
+	int year = (int) [c year];
 	
 	// apply offset
 	switch (type) {
@@ -162,19 +162,19 @@ typedef NSUInteger AdjustType;
 
 // info methods
 -(int) day {
-	return [self components].day;
+	return (int) [self components].day;
 }
 
 -(int) month {
-	return [self components].month;
+	return (int) [self components].month;
 }
 
 -(int) year {
-	return [self components].year;
+	return (int) [self components].year;
 }
 
 -(int) dayOfWeek {
-	return [self components].weekday;
+	return (int) [self components].weekday;
 }
 
 -(int) dayOfYear {
@@ -190,7 +190,7 @@ typedef NSUInteger AdjustType;
 }
 
 -(int) daysInMonth {
-	return [[NSDate calendar] rangeOfUnit: NSDayCalendarUnit inUnit: NSMonthCalendarUnit forDate: self].length;
+	return (int) [[NSDate calendar] rangeOfUnit: NSDayCalendarUnit inUnit: NSMonthCalendarUnit forDate: self].length;
 }
 
 +(int) daysInMonth: (int) month inYear: (int) year {	
@@ -417,15 +417,15 @@ typedef NSUInteger AdjustType;
 
 // time methods
 -(int) hour {
-	return [self components].hour;
+	return (int) [self components].hour;
 }
 
 -(int) minute {
-	return [self components].minute;
+	return (int) [self components].minute;
 }
 
 -(int) seconds {
-    return [self components].second;                
+    return (int) [self components].second;
 }
 
 -(NSDate*) addSeconds: (int) secondsToAdd {    
