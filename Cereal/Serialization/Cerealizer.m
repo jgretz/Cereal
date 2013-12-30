@@ -26,15 +26,17 @@
 #import "UIColor+Cereal.h"
 #import "Container.h"
 
-@implementation Cerealizer {
-    NSDateFormatter* dateFormatter;
+@implementation Cerealizer
+
+- (void)setDateFormatter:(NSDateFormatter *)dateFormatter {
+    _dateFormatter = dateFormatter;
 }
 
 -(id) init {
     if ((self = [super init])) {
         // the serializers have issues with dates - we are going to go to string and back as standard
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        [self.dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
     }
 
     return self;
@@ -99,7 +101,7 @@
         if ([value isKindOfClass: [NSArray class]])
             value = [self toObject: value];
         else if ([value isKindOfClass: [NSDate class]])
-            value = [dateFormatter stringFromDate: value];
+            value = [self.dateFormatter stringFromDate: value];
         else if ([value isKindOfClass: [NSData class]])
             value = [value base64EncodedString];
         else if ([value isKindOfClass: [UIColor class]])
@@ -249,7 +251,7 @@
         return [NSData dataFromBase64String: value];
 
     if (propertyClassType == [NSDate class])
-        return [dateFormatter dateFromString: value];
+        return [self.dateFormatter dateFromString: value];
 
     if (propertyClassType == [UIColor class])
         return [UIColor fromString: value];
