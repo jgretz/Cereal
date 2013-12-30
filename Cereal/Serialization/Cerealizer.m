@@ -104,6 +104,8 @@
             value = [value base64EncodedString];
         else if ([value isKindOfClass: [UIColor class]])
             value = [value toString];
+        else if ([value isKindOfClass: [NSUUID class]])
+            value = [value UUIDString];
         else if ([value conformsToProtocol: @protocol(NSObject)])
             value = [self toObject: value];
 
@@ -251,6 +253,9 @@
 
     if (propertyClassType == [UIColor class])
         return [UIColor fromString: value];
+    
+    if (propertyClassType == [NSUUID class])
+        return [[NSUUID alloc] initWithUUIDString:value];
 
     if (propertyClassType == [NSValue class] || [propertyClassType isSubclassOfClass: [NSValue class]])
         return [NSKeyedUnarchiver unarchiveObjectWithData: [NSData dataFromBase64String: value]];
