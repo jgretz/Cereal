@@ -41,4 +41,6 @@
 
 @interface Cerealizer : NSObject<Cerealizer>
 
+@property (strong, nonatomic) NSDateFormatter* dateFormatter;
+
 @end
