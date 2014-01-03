@@ -28,7 +28,7 @@
 
 @implementation Cerealizer
 
-- (void)setDateFormatter:(NSDateFormatter *)dateFormatter {
+-(void) setDateFormatter: (NSDateFormatter*) dateFormatter {
     _dateFormatter = dateFormatter;
 }
 
@@ -55,6 +55,9 @@
     if ([object isKindOfClass: [NSValue class]])
         return [[NSKeyedArchiver archivedDataWithRootObject: object] base64EncodedString];
 
+    if ([object isKindOfClass: [UIImage class]])
+        return [UIImageJPEGRepresentation(object, 1) base64EncodedString];
+
     // array
     if ([object isKindOfClass: [NSArray class]]) {
         NSMutableArray* array = [NSMutableArray array];
@@ -78,17 +81,17 @@
     for (PropertyInfo* propertyInfo in [Reflection propertiesForClass: [object class] includeInheritance: YES]) {
         if (!object)
             return dictionary;
-        
+
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(serializePropertyWithName:)]) {
             if (![object serializePropertyWithName: propertyInfo.name])
                 continue;
         }
-        
+
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(serializeValueForPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
                 NSObject* serializedObject = [object serializeValueForPropertyName: propertyInfo.name];
-                if(serializedObject)
-                    [dictionary setObject:serializedObject forKey: propertyInfo.name];
+                if (serializedObject)
+                    [dictionary setObject: serializedObject forKey: propertyInfo.name];
                 continue;
             }
         }
@@ -102,6 +105,8 @@
             value = [self toObject: value];
         else if ([value isKindOfClass: [NSDate class]])
             value = [self.dateFormatter stringFromDate: value];
+        else if ([value isKindOfClass: [UIImage class]])
+            value = [UIImageJPEGRepresentation(value, 1) base64EncodedString];
         else if ([value isKindOfClass: [NSData class]])
             value = [value base64EncodedString];
         else if ([value isKindOfClass: [UIColor class]])
@@ -188,7 +193,7 @@
         id value = [dictionary objectForKey: valueKey];
         if (!value || [value isKindOfClass: [NSNull class]])
             continue;
-        
+
         // provide override on object level
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(deserializeValue:forPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
@@ -247,6 +252,9 @@
 }
 
 -(id) parseValue: (NSString*) value forPropertyType: (Class) propertyClassType {
+    if (propertyClassType == [UIImage class])
+        return [UIImage imageWithData: [NSData dataFromBase64String: value]];
+
     if (propertyClassType == [NSData class])
         return [NSData dataFromBase64String: value];
 
@@ -255,9 +263,9 @@
 
     if (propertyClassType == [UIColor class])
         return [UIColor fromString: value];
-    
+
     if (propertyClassType == [NSUUID class])
-        return [[NSUUID alloc] initWithUUIDString:value];
+        return [[NSUUID alloc] initWithUUIDString: value];
 
     if (propertyClassType == [NSValue class] || [propertyClassType isSubclassOfClass: [NSValue class]])
         return [NSKeyedUnarchiver unarchiveObjectWithData: [NSData dataFromBase64String: value]];
