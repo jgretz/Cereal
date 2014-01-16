@@ -209,7 +209,7 @@
         // provide override on object level
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(deserializeValue:forPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
-                [object deserializeValue: value forPropertyName: valueKey];
+                [object deserializeValue: value forPropertyName: propertyInfo.name];
                 continue;
             }
         }
