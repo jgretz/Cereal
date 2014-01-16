@@ -86,12 +86,16 @@
             if (![object serializePropertyWithName: propertyInfo.name])
                 continue;
         }
+        
+        NSString* valueKey = propertyInfo.name;
+        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
+            valueKey = [object valueKeyForPropertyName: propertyInfo.name];
 
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(serializeValueForPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
                 NSObject* serializedObject = [object serializeValueForPropertyName: propertyInfo.name];
                 if (serializedObject)
-                    [dictionary setObject: serializedObject forKey: propertyInfo.name];
+                    [dictionary setObject: serializedObject forKey: valueKey];
                 continue;
             }
         }
@@ -115,10 +119,7 @@
             value = [value UUIDString];
         else if ([value conformsToProtocol: @protocol(NSObject)])
             value = [self toObject: value];
-
-        NSString* valueKey = propertyInfo.name;
-        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
-            valueKey = [object valueKeyForPropertyName: propertyInfo.name];
+        
         [dictionary setValue: value forKey: valueKey];
     }
     return dictionary;
@@ -197,7 +198,7 @@
         // provide override on object level
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(deserializeValue:forPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
-                [object deserializeValue: value forPropertyName: propertyInfo.name];
+                [object deserializeValue: value forPropertyName: valueKey];
                 continue;
             }
         }
