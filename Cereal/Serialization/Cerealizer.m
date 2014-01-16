@@ -69,6 +69,17 @@
         return array;
     }
 
+    // nsset
+    if ([object isKindOfClass: [NSSet class]]) {
+        NSMutableArray* array = [NSMutableArray array];
+        if ([object count] > 0) {
+            for (id obj in [NSSet setWithSet:object])
+                [array addObject: [self toObject: obj]];
+        }
+        
+        return array;
+    }
+
     // dictionary
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
     if ([object isKindOfClass: [NSDictionary class]]) {
@@ -210,11 +221,11 @@
         }
 
         if (!propertyInfo.valueType) {
-            if (propertyClassType == [NSArray class] || [propertyClassType isSubclassOfClass: [NSArray class]]) {
+            if ([propertyClassType isSubclassOfClass: [NSArray class]] || [propertyClassType isSubclassOfClass: [NSSet class]]) {
                 // this allows for multiple subtypes in a single array
                 NSArray* objects = value;
 
-                value = [NSMutableArray array];
+                value = [propertyClassType isSubclassOfClass: [NSArray class]] ? [NSMutableArray array] : [[NSMutableSet alloc] init];
                 for (id obj in objects) {
                     Class subClassType = [self overrideForProperty: propertyInfo withValue: obj forObject: object];
                     if (!subClassType)
