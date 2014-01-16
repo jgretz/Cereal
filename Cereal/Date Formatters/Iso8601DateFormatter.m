@@ -29,10 +29,19 @@
     if (self) {
         [self setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
         [self setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-        [self setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        [self setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSSSS'Z'"];
     }
     
     return self;
+}
+
+- (NSDate*)dateFromString:(NSString *)string {
+    
+    // Handle dates with or without the MS portion
+    if ([string componentsSeparatedByString:@"."].count == 1)
+        string = [string stringByAppendingString:@".00000"];
+    
+    return [super dateFromString:string];
 }
 
 @end
