@@ -28,10 +28,6 @@
 
 @implementation Cerealizer
 
--(void) setDateFormatter: (NSDateFormatter*) dateFormatter {
-    _dateFormatter = dateFormatter;
-}
-
 -(id) init {
     if ((self = [super init])) {
         // the serializers have issues with dates - we are going to go to string and back as standard
@@ -68,7 +64,7 @@
 
         return array;
     }
-
+    
     // nsset
     if ([object isKindOfClass: [NSSet class]]) {
         NSMutableArray* array = [NSMutableArray array];
