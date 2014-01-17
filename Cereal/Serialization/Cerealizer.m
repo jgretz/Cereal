@@ -28,10 +28,6 @@
 
 @implementation Cerealizer
 
--(void) setDateFormatter: (NSDateFormatter*) dateFormatter {
-    _dateFormatter = dateFormatter;
-}
-
 -(id) init {
     if ((self = [super init])) {
         // the serializers have issues with dates - we are going to go to string and back as standard
@@ -68,6 +64,17 @@
 
         return array;
     }
+    
+    // nsset
+    if ([object isKindOfClass: [NSSet class]]) {
+        NSMutableArray* array = [NSMutableArray array];
+        if ([object count] > 0) {
+            for (id obj in [NSSet setWithSet:object])
+                [array addObject: [self toObject: obj]];
+        }
+        
+        return array;
+    }
 
     // dictionary
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
@@ -86,12 +93,16 @@
             if (![object serializePropertyWithName: propertyInfo.name])
                 continue;
         }
+        
+        NSString* valueKey = propertyInfo.name;
+        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
+            valueKey = [object valueKeyForPropertyName: propertyInfo.name];
 
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(serializeValueForPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
                 NSObject* serializedObject = [object serializeValueForPropertyName: propertyInfo.name];
                 if (serializedObject)
-                    [dictionary setObject: serializedObject forKey: propertyInfo.name];
+                    [dictionary setObject: serializedObject forKey: valueKey];
                 continue;
             }
         }
@@ -115,10 +126,7 @@
             value = [value UUIDString];
         else if ([value conformsToProtocol: @protocol(NSObject)])
             value = [self toObject: value];
-
-        NSString* valueKey = propertyInfo.name;
-        if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
-            valueKey = [object valueKeyForPropertyName: propertyInfo.name];
+        
         [dictionary setValue: value forKey: valueKey];
     }
     return dictionary;
@@ -209,11 +217,11 @@
         }
 
         if (!propertyInfo.valueType) {
-            if (propertyClassType == [NSArray class] || [propertyClassType isSubclassOfClass: [NSArray class]]) {
+            if ([propertyClassType isSubclassOfClass: [NSArray class]] || [propertyClassType isSubclassOfClass: [NSSet class]]) {
                 // this allows for multiple subtypes in a single array
                 NSArray* objects = value;
 
-                value = [NSMutableArray array];
+                value = [propertyClassType isSubclassOfClass: [NSArray class]] ? [NSMutableArray array] : [[NSMutableSet alloc] init];
                 for (id obj in objects) {
                     Class subClassType = [self overrideForProperty: propertyInfo withValue: obj forObject: object];
                     if (!subClassType)
