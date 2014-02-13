@@ -300,6 +300,7 @@
 					/usr/include/libxml2,
 					"\"$(PROJECT_DIR)/../CoreMeta\"/**",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
