@@ -25,6 +25,9 @@
 #import "NSData+Base64.h"
 #import "UIColor+Cereal.h"
 #import "Container.h"
+#import "PatternMatch.h"
+#import "CaseInsensitiveMatch.h"
+#import "NSObject+IOC.h"
 
 @implementation Cerealizer
 
@@ -33,6 +36,9 @@
         // the serializers have issues with dates - we are going to go to string and back as standard
         self.dateFormatter = [[NSDateFormatter alloc] init];
         [self.dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+
+        // we are going to default inbound deserialization to case insensitive
+        self.deserializeMatch = [CaseInsensitiveMatch object];
     }
 
     return self;
@@ -64,15 +70,15 @@
 
         return array;
     }
-    
+
     // nsset
     if ([object isKindOfClass: [NSSet class]]) {
         NSMutableArray* array = [NSMutableArray array];
         if ([object count] > 0) {
-            for (id obj in [NSSet setWithSet:object])
+            for (id obj in [NSSet setWithSet: object])
                 [array addObject: [self toObject: obj]];
         }
-        
+
         return array;
     }
 
@@ -93,10 +99,14 @@
             if (![object serializePropertyWithName: propertyInfo.name])
                 continue;
         }
-        
+
         NSString* valueKey = propertyInfo.name;
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
             valueKey = [object valueKeyForPropertyName: propertyInfo.name];
+
+        if (self.serializeMatch) {
+            valueKey = [self.serializeMatch keyForPropertyNamed: valueKey];
+        }
 
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(overrideSerializeValueForPropertyName:)] && [object respondsToSelector: @selector(serializeValueForPropertyName:)]) {
             if ([object overrideSerializeValueForPropertyName: propertyInfo.name]) {
@@ -126,7 +136,7 @@
             value = [value UUIDString];
         else if ([value conformsToProtocol: @protocol(NSObject)])
             value = [self toObject: value];
-        
+
         [dictionary setValue: value forKey: valueKey];
     }
     return dictionary;
@@ -198,7 +208,14 @@
         if ([object conformsToProtocol: @protocol(Cerealizable)] && [object respondsToSelector: @selector(valueKeyForPropertyName:)])
             valueKey = [object valueKeyForPropertyName: propertyInfo.name];
 
-        id value = [dictionary objectForKey: valueKey];
+        id value;
+        if (self.deserializeMatch) {
+            value = [self.deserializeMatch valueForKey: valueKey inDictionary: dictionary];
+        }
+        else {
+            value = [dictionary objectForKey: valueKey];
+        }
+
         if (!value || [value isKindOfClass: [NSNull class]])
             continue;
 

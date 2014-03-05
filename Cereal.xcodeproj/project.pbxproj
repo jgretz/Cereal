@@ -16,6 +16,8 @@
 		8C6B4D201747CB240023ADCF /* XmlCerealizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B4D1A1747CB240023ADCF /* XmlCerealizer.m */; };
 		9B464D3118723D4E005DF3A3 /* Iso8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B464D2E18723D4E005DF3A3 /* Iso8601DateFormatter.m */; };
 		9B464D3218723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B464D3018723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m */; };
+		BAC2859724106C5BB914E907 /* CaseInsensitiveMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC283C349EACFA753798A17 /* CaseInsensitiveMatch.m */; };
+		BAC28ED86594A1AA68E50365 /* PascalCaseMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC28A6445C5B6DFFC54B182 /* PascalCaseMatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +55,11 @@
 		9B464D2E18723D4E005DF3A3 /* Iso8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Iso8601DateFormatter.m; sourceTree = "<group>"; };
 		9B464D2F18723D4E005DF3A3 /* MicrosoftJsonDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicrosoftJsonDateFormatter.h; sourceTree = "<group>"; };
 		9B464D3018723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicrosoftJsonDateFormatter.m; sourceTree = "<group>"; };
+		BAC282F45D98697482D2625E /* PascalCaseMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PascalCaseMatch.h; sourceTree = "<group>"; };
+		BAC283C349EACFA753798A17 /* CaseInsensitiveMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseInsensitiveMatch.m; sourceTree = "<group>"; };
+		BAC28893D14A928B60DC7067 /* PatternMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternMatch.h; sourceTree = "<group>"; };
+		BAC28A6445C5B6DFFC54B182 /* PascalCaseMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PascalCaseMatch.m; sourceTree = "<group>"; };
+		BAC28F8BB2A92E9743561428 /* CaseInsensitiveMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseInsensitiveMatch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +138,7 @@
 				8C6B4D0F1747CB240023ADCF /* Cerealizable.h */,
 				8C6B4D101747CB240023ADCF /* Cerealizer.h */,
 				8C6B4D111747CB240023ADCF /* Cerealizer.m */,
+				BAC284D5856CC3BCC8654747 /* PatternMatch */,
 			);
 			path = Serialization;
 			sourceTree = "<group>";
@@ -165,6 +173,18 @@
 				9B464D3018723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m */,
 			);
 			path = "Date Formatters";
+			sourceTree = "<group>";
+		};
+		BAC284D5856CC3BCC8654747 /* PatternMatch */ = {
+			isa = PBXGroup;
+			children = (
+				BAC283C349EACFA753798A17 /* CaseInsensitiveMatch.m */,
+				BAC28F8BB2A92E9743561428 /* CaseInsensitiveMatch.h */,
+				BAC28A6445C5B6DFFC54B182 /* PascalCaseMatch.m */,
+				BAC282F45D98697482D2625E /* PascalCaseMatch.h */,
+				BAC28893D14A928B60DC7067 /* PatternMatch.h */,
+			);
+			path = PatternMatch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +246,8 @@
 				8C6B4D1F1747CB240023ADCF /* GDataXMLNode.m in Sources */,
 				8C6B4D201747CB240023ADCF /* XmlCerealizer.m in Sources */,
 				9B464D3118723D4E005DF3A3 /* Iso8601DateFormatter.m in Sources */,
+				BAC2859724106C5BB914E907 /* CaseInsensitiveMatch.m in Sources */,
+				BAC28ED86594A1AA68E50365 /* PascalCaseMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
