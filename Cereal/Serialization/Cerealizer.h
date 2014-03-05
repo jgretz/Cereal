@@ -22,6 +22,8 @@
 #import <Foundation/Foundation.h>
 #import "Cerealizable.h"
 
+@protocol PatternMatch;
+
 @protocol Cerealizer <NSObject>
 
 -(NSString*) toString: (id) object;
@@ -42,5 +44,9 @@
 @interface Cerealizer : NSObject<Cerealizer>
 
 @property (strong, nonatomic) NSDateFormatter* dateFormatter;
+
+@property (strong, nonatomic) id<PatternMatch> deserializeMatch;
+@property (strong, nonatomic) id<PatternMatch> serializeMatch;
+
 
 @end
