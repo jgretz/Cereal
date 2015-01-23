@@ -17,6 +17,8 @@
 		9B464D3118723D4E005DF3A3 /* Iso8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B464D2E18723D4E005DF3A3 /* Iso8601DateFormatter.m */; };
 		9B464D3218723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B464D3018723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m */; };
 		BAC2859724106C5BB914E907 /* CaseInsensitiveMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC283C349EACFA753798A17 /* CaseInsensitiveMatch.m */; };
+		BAC286D073211858EFC37FF9 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC285EAA3FF91CC1A5DED6A /* NSObject+JSON.m */; };
+		BAC288E1635CAF6B0F483846 /* NSObject+Cereal.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC282BB80B0434B9943F1C0 /* NSObject+Cereal.m */; };
 		BAC28ED86594A1AA68E50365 /* PascalCaseMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC28A6445C5B6DFFC54B182 /* PascalCaseMatch.m */; };
 /* End PBXBuildFile section */
 
@@ -55,10 +57,14 @@
 		9B464D2E18723D4E005DF3A3 /* Iso8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Iso8601DateFormatter.m; sourceTree = "<group>"; };
 		9B464D2F18723D4E005DF3A3 /* MicrosoftJsonDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicrosoftJsonDateFormatter.h; sourceTree = "<group>"; };
 		9B464D3018723D4E005DF3A3 /* MicrosoftJsonDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicrosoftJsonDateFormatter.m; sourceTree = "<group>"; };
+		BAC282BB80B0434B9943F1C0 /* NSObject+Cereal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Cereal.m"; sourceTree = "<group>"; };
+		BAC282E1FC7F44EEB43B4213 /* NSObject+Cereal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Cereal.h"; sourceTree = "<group>"; };
 		BAC282F45D98697482D2625E /* PascalCaseMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PascalCaseMatch.h; sourceTree = "<group>"; };
 		BAC283C349EACFA753798A17 /* CaseInsensitiveMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseInsensitiveMatch.m; sourceTree = "<group>"; };
+		BAC285EAA3FF91CC1A5DED6A /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
 		BAC28893D14A928B60DC7067 /* PatternMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternMatch.h; sourceTree = "<group>"; };
 		BAC28A6445C5B6DFFC54B182 /* PascalCaseMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PascalCaseMatch.m; sourceTree = "<group>"; };
+		BAC28E097E39AD1122B90BA9 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
 		BAC28F8BB2A92E9743561428 /* CaseInsensitiveMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseInsensitiveMatch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +132,10 @@
 				8C6B4D0B1747CB240023ADCF /* NSDate+Helpers.m */,
 				8C6B4D0C1747CB240023ADCF /* UIColor+Cereal.h */,
 				8C6B4D0D1747CB240023ADCF /* UIColor+Cereal.m */,
+				BAC28E097E39AD1122B90BA9 /* NSObject+JSON.h */,
+				BAC282E1FC7F44EEB43B4213 /* NSObject+Cereal.h */,
+				BAC285EAA3FF91CC1A5DED6A /* NSObject+JSON.m */,
+				BAC282BB80B0434B9943F1C0 /* NSObject+Cereal.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -248,6 +258,8 @@
 				9B464D3118723D4E005DF3A3 /* Iso8601DateFormatter.m in Sources */,
 				BAC2859724106C5BB914E907 /* CaseInsensitiveMatch.m in Sources */,
 				BAC28ED86594A1AA68E50365 /* PascalCaseMatch.m in Sources */,
+				BAC286D073211858EFC37FF9 /* NSObject+JSON.m in Sources */,
+				BAC288E1635CAF6B0F483846 /* NSObject+Cereal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
