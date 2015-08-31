@@ -248,6 +248,8 @@
                         [value addObject: [self create: subClassType fromDictionary: obj]];
                     else if ([obj isKindOfClass: [NSString class]] && ((NSString*) obj).length > 0)
                         [value addObject: [self parseValue: obj forPropertyType: subClassType]];
+                    else if ([obj isKindOfClass:subClassType])
+                        [value addObject:obj];
                 }
             }
             else if (propertyClassType == [NSDictionary class] || [propertyClassType isSubclassOfClass: [NSDictionary class]]) {
