@@ -10,6 +10,8 @@
 		8CE5F4E11BE40D140049E0C7 /* Cereal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CE5F4E01BE40D140049E0C7 /* Cereal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CE5F4E81BE40D140049E0C7 /* Cereal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */; };
 		8CE5F4ED1BE40D140049E0C7 /* CerealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F4EC1BE40D140049E0C7 /* CerealTests.swift */; };
+		8CE881711BE6B96900D21D8A /* CoreMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE881701BE6B96900D21D8A /* CoreMeta.framework */; };
+		BAC28E64134CCDAEF82FDEDF /* Cerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,10 +27,12 @@
 /* Begin PBXFileReference section */
 		8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cereal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE5F4E01BE40D140049E0C7 /* Cereal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cereal.h; sourceTree = "<group>"; };
-		8CE5F4E21BE40D140049E0C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CE5F4E71BE40D140049E0C7 /* CerealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CerealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE5F4EC1BE40D140049E0C7 /* CerealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CerealTests.swift; sourceTree = "<group>"; };
 		8CE5F4EE1BE40D140049E0C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CE881701BE6B96900D21D8A /* CoreMeta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMeta.framework; path = "../CoreMeta/CoreMeta/build/Debug-iphoneos/CoreMeta.framework"; sourceTree = "<group>"; };
+		BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cerealizer.swift; sourceTree = "<group>"; };
+		BAC2881E90FC202775FEC11E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE881711BE6B96900D21D8A /* CoreMeta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +58,7 @@
 		8CE5F4D31BE40D140049E0C7 = {
 			isa = PBXGroup;
 			children = (
+				8CE881701BE6B96900D21D8A /* CoreMeta.framework */,
 				8CE5F4DF1BE40D140049E0C7 /* Cereal */,
 				8CE5F4EB1BE40D140049E0C7 /* CerealTests */,
 				8CE5F4DE1BE40D140049E0C7 /* Products */,
@@ -72,7 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				8CE5F4E01BE40D140049E0C7 /* Cereal.h */,
-				8CE5F4E21BE40D140049E0C7 /* Info.plist */,
+				BAC2893BBE8AAC9133AED28F /* Serialization */,
+				BAC28817FEEA20BFDE6E66A8 /* Resources */,
 			);
 			path = Cereal;
 			sourceTree = "<group>";
@@ -84,6 +91,22 @@
 				8CE5F4EE1BE40D140049E0C7 /* Info.plist */,
 			);
 			path = CerealTests;
+			sourceTree = "<group>";
+		};
+		BAC28817FEEA20BFDE6E66A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2881E90FC202775FEC11E /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BAC2893BBE8AAC9133AED28F /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */,
+			);
+			path = Serialization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC28E64134CCDAEF82FDEDF /* Cerealizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +336,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Cereal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Cereal/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truefit.Cereal;
@@ -328,7 +352,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Cereal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Cereal/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truefit.Cereal;
