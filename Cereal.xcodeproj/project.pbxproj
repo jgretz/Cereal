@@ -9,9 +9,17 @@
 /* Begin PBXBuildFile section */
 		8CE5F4E11BE40D140049E0C7 /* Cereal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CE5F4E01BE40D140049E0C7 /* Cereal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CE5F4E81BE40D140049E0C7 /* Cereal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */; };
-		8CE5F4ED1BE40D140049E0C7 /* CerealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F4EC1BE40D140049E0C7 /* CerealTests.swift */; };
+		8CE5F4ED1BE40D140049E0C7 /* JsonCerealizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */; };
 		8CE881711BE6B96900D21D8A /* CoreMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE881701BE6B96900D21D8A /* CoreMeta.framework */; };
+		BAC28019FB3F6CDFF1D72790 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2801E318E9817DD978B81 /* Types.swift */; };
+		BAC282776C20CDEFE333EE95 /* Cerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */; };
+		BAC28379C2B6EB82622863EE /* JsonCerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */; };
+		BAC288688D730F140E810DD1 /* CerealizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */; };
+		BAC28A11598156A67E2B6CA1 /* Cerealizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */; };
+		BAC28C936E4796EB4279746A /* CerealizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */; };
 		BAC28E64134CCDAEF82FDEDF /* Cerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */; };
+		BAC28F24810CCFB10661D650 /* Cerealizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */; };
+		BAC28FA648D7DE7B734DB952 /* JsonCerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,11 +36,15 @@
 		8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cereal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE5F4E01BE40D140049E0C7 /* Cereal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cereal.h; sourceTree = "<group>"; };
 		8CE5F4E71BE40D140049E0C7 /* CerealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CerealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CE5F4EC1BE40D140049E0C7 /* CerealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CerealTests.swift; sourceTree = "<group>"; };
+		8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCerealizerTests.swift; sourceTree = "<group>"; };
 		8CE5F4EE1BE40D140049E0C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CE881701BE6B96900D21D8A /* CoreMeta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMeta.framework; path = "../CoreMeta/CoreMeta/build/Debug-iphoneos/CoreMeta.framework"; sourceTree = "<group>"; };
+		BAC2801E318E9817DD978B81 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CerealizerBase.swift; sourceTree = "<group>"; };
+		BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cerealizable.swift; sourceTree = "<group>"; };
 		BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cerealizer.swift; sourceTree = "<group>"; };
 		BAC2881E90FC202775FEC11E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonCerealizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +99,9 @@
 		8CE5F4EB1BE40D140049E0C7 /* CerealTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CE5F4EC1BE40D140049E0C7 /* CerealTests.swift */,
+				8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */,
 				8CE5F4EE1BE40D140049E0C7 /* Info.plist */,
+				BAC2801E318E9817DD978B81 /* Types.swift */,
 			);
 			path = CerealTests;
 			sourceTree = "<group>";
@@ -105,8 +118,19 @@
 			isa = PBXGroup;
 			children = (
 				BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */,
+				BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */,
+				BAC28FCF95D4FC6F07BC8AFB /* JSON */,
+				BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */,
 			);
 			path = Serialization;
+			sourceTree = "<group>";
+		};
+		BAC28FCF95D4FC6F07BC8AFB /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAC28E64134CCDAEF82FDEDF /* Cerealizer.swift in Sources */,
+				BAC28C936E4796EB4279746A /* CerealizerBase.swift in Sources */,
+				BAC28FA648D7DE7B734DB952 /* JsonCerealizer.swift in Sources */,
+				BAC28F24810CCFB10661D650 /* Cerealizable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CE5F4ED1BE40D140049E0C7 /* CerealTests.swift in Sources */,
+				8CE5F4ED1BE40D140049E0C7 /* JsonCerealizerTests.swift in Sources */,
+				BAC28379C2B6EB82622863EE /* JsonCerealizer.swift in Sources */,
+				BAC28019FB3F6CDFF1D72790 /* Types.swift in Sources */,
+				BAC288688D730F140E810DD1 /* CerealizerBase.swift in Sources */,
+				BAC282776C20CDEFE333EE95 /* Cerealizer.swift in Sources */,
+				BAC28A11598156A67E2B6CA1 /* Cerealizable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
