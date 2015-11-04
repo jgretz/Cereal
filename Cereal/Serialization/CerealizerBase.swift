@@ -175,15 +175,15 @@ public class CerealizerBase: NSObject, Cerealizer {
                 key = mapped!
             }
 
-            // allow cerealizable to override
-            if (obj is Cerealizable) {
-                let cerializable = obj as! Cerealizable
-                if (!cerializable.shouldDeserializeProperty(key)) {
+            // allow decerealizable to override
+            if (obj is Decerealizable) {
+                let decerializable = obj as! Decerealizable
+                if (!decerializable.shouldDeserializeProperty(key)) {
                     continue
                 }
 
-                if (cerializable.overrideDeserializeProperty(key, value: value)) {
-                    cerializable.deserializeProperty(key, value: value)
+                if (decerializable.overrideDeserializeProperty(key, value: value)) {
+                    decerializable.deserializeProperty(key, value: value)
                     continue
                 }
             }
@@ -196,12 +196,12 @@ public class CerealizerBase: NSObject, Cerealizer {
                 value = self.create(type, fromObject: value!)
 
             } else if (value is Array<AnyObject>) {
-                if (obj is Cerealizable) {
+                if (obj is Decerealizable) {
                     let sourceArray = value as! Array<AnyObject>
                     var targetArray = Array<AnyObject>()
 
                     for source in sourceArray {
-                        let type: AnyClass = (obj as! Cerealizable).typeFor(key, value: source)
+                        let type: AnyClass = (obj as! Decerealizable).typeFor(key, value: source)
                         let item = self.create(type, fromObject: source)
                         if (item != nil) {
                             targetArray.append(item!)
@@ -223,7 +223,7 @@ public class CerealizerBase: NSObject, Cerealizer {
     }
 
     internal func deserializeValue(obj: NSObject, properties: Array<CMPropertyInfo>, propertyName: String, value: AnyObject) -> AnyObject? {
-        if (!(obj is Cerealizable) || !(value is String)) {
+        if (!(value is String)) {
             return value
         }
 
