@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol Cerealizable {
+public protocol Cerealizable {
     //***************
     // Serialization
     //***************

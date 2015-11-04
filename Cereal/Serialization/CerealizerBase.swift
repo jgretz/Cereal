@@ -190,9 +190,11 @@ public class CerealizerBase: NSObject, Cerealizer {
 
             // parse
             if (value is Dictionary<String, AnyObject>) {
-                if (obj is Cerealizable) {
-                    value = self.create((obj as! Cerealizable).typeFor(key, value: value), fromObject: value!)
-                }
+                let property = properties.first({ $0.name == key })!
+                let type: AnyClass = NSClassFromString(property.typeInfo.name)!
+
+                value = self.create(type, fromObject: value!)
+
             } else if (value is Array<AnyObject>) {
                 if (obj is Cerealizable) {
                     let sourceArray = value as! Array<AnyObject>
@@ -209,20 +211,22 @@ public class CerealizerBase: NSObject, Cerealizer {
                     value = targetArray
                 }
             } else {
-                value = deserializeValue(obj, propertyName: key, value: value!)
+                value = deserializeValue(obj, properties: properties, propertyName: key, value: value!)
             }
 
             obj.setValue(value, forKey: key)
         }
     }
 
-    internal func deserializeValue(obj: NSObject, propertyName: String, value: AnyObject) -> AnyObject {
+    internal func deserializeValue(obj: NSObject, properties: Array<CMPropertyInfo>, propertyName: String, value: AnyObject) -> AnyObject {
         if (!(obj is Cerealizable) || !(value is String)) {
             return value
         }
 
         let stringValue = value as! String
-        let type: AnyClass = (obj as! Cerealizable).typeFor(propertyName, value: stringValue)
+
+        let property = properties.first({ $0.name == propertyName })!
+        let type: AnyClass = NSClassFromString(property.typeInfo.name)!
 
         if (type == NSData.self) {
             return stringValue.dataUsingEncoding(NSUTF8StringEncoding)!
