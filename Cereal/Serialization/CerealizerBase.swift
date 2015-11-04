@@ -8,10 +8,14 @@ import CoreMeta
 
 public class CerealizerBase: NSObject, Cerealizer {
     public var dateFormatter: NSDateFormatter!
+    public var serializeKeyTransform: CerealKeyTransform?
+    public var deserializeKeyTransform: CerealKeyTransform?
 
     public override init() {
         self.dateFormatter = NSDateFormatter()
         self.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        self.deserializeKeyTransform = CaseInsensitiveKeyTransform()
     }
 
     //***********
@@ -56,7 +60,8 @@ public class CerealizerBase: NSObject, Cerealizer {
                 continue
             }
 
-            bag[property.name] = serializeValue(property.name, value: value!)
+            let key = self.serializeKeyTransform == nil ? property.name : self.serializeKeyTransform!.transformKey(property.name)
+            bag[key] = serializeValue(property.name, value: value!)
         }
 
         return bag
@@ -150,10 +155,24 @@ public class CerealizerBase: NSObject, Cerealizer {
     }
 
     internal func fillObject(obj: NSObject, data: Dictionary<String, AnyObject>) {
-        for key in data.keys {
-            var value = data[key]
+        let properties = CMTypeIntrospector(t: obj.dynamicType).properties()
+
+        for dataKey in data.keys {
+            // if we dont have a value, not sure how we are here, but protection
+            var value = data[dataKey]
             if (value == nil) {
                 continue
+            }
+
+            // override key with transform for object if applicable
+            var key = dataKey
+            if (self.deserializeKeyTransform != nil) {
+                let mapped = self.deserializeKeyTransform!.propertyName(properties, forKey: key)
+                if (mapped == nil) {
+                    continue
+                }
+
+                key = mapped!
             }
 
             // allow cerealizable to override
