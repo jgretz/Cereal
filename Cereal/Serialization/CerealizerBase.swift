@@ -211,14 +211,18 @@ public class CerealizerBase: NSObject, Cerealizer {
                     value = targetArray
                 }
             } else {
-                value = deserializeValue(obj, properties: properties, propertyName: key, value: value!)
+                let item = deserializeValue(obj, properties: properties, propertyName: key, value: value!)
+                if (item == nil) {
+                    continue
+                }
+                value = item!
             }
 
             obj.setValue(value, forKey: key)
         }
     }
 
-    internal func deserializeValue(obj: NSObject, properties: Array<CMPropertyInfo>, propertyName: String, value: AnyObject) -> AnyObject {
+    internal func deserializeValue(obj: NSObject, properties: Array<CMPropertyInfo>, propertyName: String, value: AnyObject) -> AnyObject? {
         if (!(obj is Cerealizable) || !(value is String)) {
             return value
         }
@@ -229,19 +233,23 @@ public class CerealizerBase: NSObject, Cerealizer {
         let type: AnyClass = NSClassFromString(property.typeInfo.name)!
 
         if (type == NSData.self) {
-            return stringValue.dataUsingEncoding(NSUTF8StringEncoding)!
+            return stringValue.dataUsingEncoding(NSUTF8StringEncoding)
         }
 
         if (type == NSDate.self) {
-            return self.dateFormatter.dateFromString(stringValue)!
+            return self.dateFormatter.dateFromString(stringValue)
         }
 
         if (type == NSUUID.self) {
-            return NSUUID(UUIDString: stringValue)!
+            return NSUUID(UUIDString: stringValue)
         }
 
         if (type == NSValue.self) {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(stringValue.dataUsingEncoding(NSUTF8StringEncoding)!)!
+            let data = stringValue.dataUsingEncoding(NSUTF8StringEncoding)
+            if (data != nil) {
+                return NSKeyedUnarchiver.unarchiveObjectWithData(data!)
+            }
+            return nil
         }
 
         return stringValue
