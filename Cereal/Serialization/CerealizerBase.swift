@@ -131,7 +131,7 @@ public class CerealizerBase: NSObject, Cerealizer {
         return nil
     }
 
-    internal func create(type: AnyClass, fromObject: AnyObject) -> AnyObject? {
+    public func create(type: AnyClass, fromObject: AnyObject) -> AnyObject? {
         if (fromObject is Array<Dictionary<String, NSObject>>) {
             let dataArray: Array<Dictionary<String, NSObject>> = fromObject as! Array<Dictionary<String, NSObject>>
 
@@ -218,6 +218,10 @@ public class CerealizerBase: NSObject, Cerealizer {
                     continue
                 }
                 value = item!
+            }
+
+            if (value == nil || value is NSNull) {
+                continue
             }
 
             obj.setValue(value, forKey: key)

@@ -14,4 +14,5 @@ import Foundation
     func toArrayOfPropertyBags(obj:Array<NSObject>)->Array<Dictionary<String,AnyObject>>
 
     func create(type:AnyClass, fromString:String)->AnyObject?
+    func create(type:AnyClass, fromObject:AnyObject) -> AnyObject?
 }
