@@ -7,7 +7,7 @@ import Foundation
 
 public protocol Decerealizable {
     
-    func typeFor(propertyName: String, value: AnyObject?) -> AnyClass
+    func typeFor(propertyName: String, value: AnyObject?) -> AnyClass?
 
     func shouldDeserializeProperty(propertyName: String) -> Bool
 

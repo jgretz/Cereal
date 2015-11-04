@@ -201,10 +201,12 @@ public class CerealizerBase: NSObject, Cerealizer {
                     var targetArray = Array<AnyObject>()
 
                     for source in sourceArray {
-                        let type: AnyClass = (obj as! Decerealizable).typeFor(key, value: source)
-                        let item = self.create(type, fromObject: source)
-                        if (item != nil) {
-                            targetArray.append(item!)
+                        let type:AnyClass? = (obj as! Decerealizable).typeFor(key, value: source)
+                        if (type != nil) {
+                            let item = self.create(type!, fromObject: source)
+                            if (item != nil) {
+                                targetArray.append(item!)
+                            }
                         }
                     }
 
