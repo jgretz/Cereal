@@ -12,14 +12,20 @@
 		8CE5F4ED1BE40D140049E0C7 /* JsonCerealizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */; };
 		8CE881711BE6B96900D21D8A /* CoreMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE881701BE6B96900D21D8A /* CoreMeta.framework */; };
 		BAC28019FB3F6CDFF1D72790 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2801E318E9817DD978B81 /* Types.swift */; };
+		BAC28159191AB499C38CD128 /* Iso8601UtcDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC28AEA1A8987EB895ADEFC /* Iso8601UtcDateFormatter.swift */; };
 		BAC282776C20CDEFE333EE95 /* Cerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */; };
 		BAC28379C2B6EB82622863EE /* JsonCerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */; };
+		BAC285A277A6BA4BD905D71E /* CerealNSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC28B4DD6E2566F26008A41 /* CerealNSObjectExtensions.swift */; };
+		BAC287C0601F36927D665F1A /* MicrosoftJsonDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2837E02ABD9F764EE73AA /* MicrosoftJsonDateFormatter.swift */; };
 		BAC288688D730F140E810DD1 /* CerealizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */; };
+		BAC2898646453FD1677DAFFF /* MicrosoftJsonDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2837E02ABD9F764EE73AA /* MicrosoftJsonDateFormatter.swift */; };
 		BAC28A11598156A67E2B6CA1 /* Cerealizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */; };
+		BAC28B40685F9D8896F0070F /* Iso8601UtcDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC28AEA1A8987EB895ADEFC /* Iso8601UtcDateFormatter.swift */; };
 		BAC28C936E4796EB4279746A /* CerealizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */; };
 		BAC28E64134CCDAEF82FDEDF /* Cerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */; };
 		BAC28F24810CCFB10661D650 /* Cerealizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */; };
 		BAC28FA648D7DE7B734DB952 /* JsonCerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */; };
+		BAC28FAF2D99FFA4EA0991B1 /* CerealNSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC28B4DD6E2566F26008A41 /* CerealNSObjectExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +48,12 @@
 		BAC2801E318E9817DD978B81 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CerealizerBase.swift; sourceTree = "<group>"; };
 		BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cerealizable.swift; sourceTree = "<group>"; };
+		BAC2837E02ABD9F764EE73AA /* MicrosoftJsonDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicrosoftJsonDateFormatter.swift; sourceTree = "<group>"; };
 		BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cerealizer.swift; sourceTree = "<group>"; };
 		BAC2881E90FC202775FEC11E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		BAC2886C78EF62B51CFB9816 /* JsonCerealizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonCerealizer.swift; sourceTree = "<group>"; };
+		BAC28AEA1A8987EB895ADEFC /* Iso8601UtcDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iso8601UtcDateFormatter.swift; sourceTree = "<group>"; };
+		BAC28B4DD6E2566F26008A41 /* CerealNSObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CerealNSObjectExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +101,8 @@
 				8CE5F4E01BE40D140049E0C7 /* Cereal.h */,
 				BAC2893BBE8AAC9133AED28F /* Serialization */,
 				BAC28817FEEA20BFDE6E66A8 /* Resources */,
+				BAC28F99FD52BA36999CACF7 /* Extensions */,
+				BAC280E993E85C09006C43D5 /* Date Formatters */,
 			);
 			path = Cereal;
 			sourceTree = "<group>";
@@ -104,6 +115,15 @@
 				BAC2801E318E9817DD978B81 /* Types.swift */,
 			);
 			path = CerealTests;
+			sourceTree = "<group>";
+		};
+		BAC280E993E85C09006C43D5 /* Date Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				BAC28AEA1A8987EB895ADEFC /* Iso8601UtcDateFormatter.swift */,
+				BAC2837E02ABD9F764EE73AA /* MicrosoftJsonDateFormatter.swift */,
+			);
+			path = "Date Formatters";
 			sourceTree = "<group>";
 		};
 		BAC28817FEEA20BFDE6E66A8 /* Resources */ = {
@@ -123,6 +143,14 @@
 				BAC2815C70A8EE2B9CB3C90A /* Cerealizable.swift */,
 			);
 			path = Serialization;
+			sourceTree = "<group>";
+		};
+		BAC28F99FD52BA36999CACF7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BAC28B4DD6E2566F26008A41 /* CerealNSObjectExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BAC28FCF95D4FC6F07BC8AFB /* JSON */ = {
@@ -245,6 +273,9 @@
 				BAC28C936E4796EB4279746A /* CerealizerBase.swift in Sources */,
 				BAC28FA648D7DE7B734DB952 /* JsonCerealizer.swift in Sources */,
 				BAC28F24810CCFB10661D650 /* Cerealizable.swift in Sources */,
+				BAC28FAF2D99FFA4EA0991B1 /* CerealNSObjectExtensions.swift in Sources */,
+				BAC28B40685F9D8896F0070F /* Iso8601UtcDateFormatter.swift in Sources */,
+				BAC287C0601F36927D665F1A /* MicrosoftJsonDateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +289,9 @@
 				BAC288688D730F140E810DD1 /* CerealizerBase.swift in Sources */,
 				BAC282776C20CDEFE333EE95 /* Cerealizer.swift in Sources */,
 				BAC28A11598156A67E2B6CA1 /* Cerealizable.swift in Sources */,
+				BAC285A277A6BA4BD905D71E /* CerealNSObjectExtensions.swift in Sources */,
+				BAC28159191AB499C38CD128 /* Iso8601UtcDateFormatter.swift in Sources */,
+				BAC2898646453FD1677DAFFF /* MicrosoftJsonDateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
