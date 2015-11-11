@@ -15,3 +15,18 @@ public protocol Decerealizable {
 
     func deserializeProperty(propertyName: String, value: AnyObject?)
 }
+
+public extension Decerealizable {
+    
+    func shouldDeserializeProperty(propertyName: String) -> Bool {
+        return true
+    }
+    
+    func overrideDeserializeProperty(propertyName: String, value: AnyObject?) -> Bool {
+        return false
+    }
+    
+    func deserializeProperty(propertyName: String, value: AnyObject?) {
+
+    }
+}
