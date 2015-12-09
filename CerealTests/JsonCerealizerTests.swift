@@ -12,6 +12,7 @@ class JsonCerealizerTests: XCTestCase {
     var serializer:JsonCerealizer!
     var flower:Flower!
     var flowerJson:String!
+    var dictionaryFlowerJson:String!
 
     override func setUp() {
         serializer = JsonCerealizer()
@@ -22,7 +23,8 @@ class JsonCerealizerTests: XCTestCase {
         flower.planted = NSDate(timeIntervalSince1970: 0)
         flower.petals = [ Petal(color: "Red"), Petal(color: "Pink"), Petal(color: "White") ]
 
-        flowerJson = "{\"type\":\"rose\",\"planted\":\"1969-12-31 19:00:00\",\"petals\":[{\"color\":\"Red\"},{\"color\":\"Pink\"},{\"color\":\"White\"}],\"color\":\"red\"}"
+        flowerJson = "{\"petals\":[{\"color\":\"Red\"},{\"color\":\"Pink\"},{\"color\":\"White\"}],\"type\":\"rose\",\"color\":\"red\",\"planted\":\"1969-12-31 19:00:00\"}"
+        dictionaryFlowerJson = "{\"flower\":\(flowerJson),\"another\":\"string\"}"
     }
 
     //***********
@@ -52,6 +54,16 @@ class JsonCerealizerTests: XCTestCase {
     func testToStringShouldReturnProperString() {
         let json = serializer.toString(flower)
         XCTAssert(json == flowerJson, "Json Cerealizer: serialization not returning proper string")
+    }
+    
+    func testToStringShouldReturnAStringForDictionary() {
+        let dict = [
+            "flower": flower,
+            "another": "string"
+        ]
+        
+        let json = serializer.toString(dict)
+        XCTAssert(json == dictionaryFlowerJson, "Json Cerealizer: serialization not returning proper string")
     }
 
     //*****************

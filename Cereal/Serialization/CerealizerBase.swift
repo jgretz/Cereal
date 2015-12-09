@@ -37,11 +37,14 @@ public class CerealizerBase: NSObject, Cerealizer {
 
     public func toPropertyBag(obj: NSObject?) -> Dictionary<String, AnyObject> {
         var bag = Dictionary<String, AnyObject>()
-        if (obj == nil) {
-            return bag;
+        guard let obj = obj
+            else { return bag }
+        
+        if obj is NSDictionary {
+            return serializeValue(obj) as! Dictionary<String, AnyObject>
         }
 
-        let properties = CMTypeIntrospector(t: obj!.dynamicType).properties()
+        let properties = CMTypeIntrospector(t: obj.dynamicType).properties()
         for property in properties {
             if (obj is Cerealizable) {
                 let cerealizable = obj as! Cerealizable
@@ -55,19 +58,19 @@ public class CerealizerBase: NSObject, Cerealizer {
                 }
             }
 
-            let value = obj!.valueForKey(property.name)
+            let value = obj.valueForKey(property.name)
             if (value == nil) {
                 continue
             }
 
             let key = self.serializeKeyTransform == nil ? property.name : self.serializeKeyTransform!.transformKey(property.name)
-            bag[key] = serializeValue(property.name, value: value!)
+            bag[key] = serializeValue(value!)
         }
 
         return bag
     }
 
-    internal func serializeValue(propertyName: String, value: AnyObject) -> AnyObject {
+    internal func serializeValue(value: AnyObject) -> AnyObject {
         // handle straight return cases
         if (value is String || value is NSNumber) {
             return value
@@ -94,11 +97,12 @@ public class CerealizerBase: NSObject, Cerealizer {
             return self.toArrayOfPropertyBags(value as! Array<NSObject>)
         }
 
-        if (value is Dictionary<String, NSObject>) {
-            let sourceDict = value as! Dictionary<String, NSObject>
-            var returnDict = Dictionary<String, NSObject>()
+        if let sourceDict = value as? [String: NSObject] {
+            var returnDict = [String: NSObject]()
             for key in sourceDict.keys {
-                returnDict[key] = self.toPropertyBag(sourceDict[key])
+                if let dictValue = sourceDict[key] {
+                    returnDict[key] = serializeValue(dictValue) as? NSObject
+                }
             }
 
             return returnDict
