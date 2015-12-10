@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		498639621C19C4E100DBBF29 /* UnderscoreKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */; };
+		4986396C1C19FFE800DBBF29 /* UnderscoreKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */; };
 		8CE5F4E11BE40D140049E0C7 /* Cereal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CE5F4E01BE40D140049E0C7 /* Cereal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CE5F4E81BE40D140049E0C7 /* Cereal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */; };
 		8CE5F4ED1BE40D140049E0C7 /* JsonCerealizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */; };
@@ -48,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderscoreKeyTransform.swift; sourceTree = "<group>"; };
 		8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cereal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE5F4E01BE40D140049E0C7 /* Cereal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cereal.h; sourceTree = "<group>"; };
 		8CE5F4E71BE40D140049E0C7 /* CerealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CerealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +171,7 @@
 				BAC282379AAF01579AC134FC /* CerealKeyTransform.swift */,
 				BAC28C59727A92628E0E4EA5 /* CaseInsensitiveKeyTransform.swift */,
 				BAC28108C4415B523619FB04 /* PascalCaseKeyTransform.swift */,
+				498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */,
 			);
 			path = "Key Transforms";
 			sourceTree = "<group>";
@@ -298,6 +302,7 @@
 			files = (
 				BAC28E64134CCDAEF82FDEDF /* Cerealizer.swift in Sources */,
 				BAC28C936E4796EB4279746A /* CerealizerBase.swift in Sources */,
+				498639621C19C4E100DBBF29 /* UnderscoreKeyTransform.swift in Sources */,
 				BAC28FA648D7DE7B734DB952 /* JsonCerealizer.swift in Sources */,
 				BAC28F24810CCFB10661D650 /* Cerealizable.swift in Sources */,
 				BAC28FAF2D99FFA4EA0991B1 /* CerealNSObjectExtensions.swift in Sources */,
@@ -322,6 +327,7 @@
 				BAC28A11598156A67E2B6CA1 /* Cerealizable.swift in Sources */,
 				BAC285A277A6BA4BD905D71E /* CerealNSObjectExtensions.swift in Sources */,
 				BAC28159191AB499C38CD128 /* Iso8601UtcDateFormatter.swift in Sources */,
+				4986396C1C19FFE800DBBF29 /* UnderscoreKeyTransform.swift in Sources */,
 				BAC2898646453FD1677DAFFF /* MicrosoftJsonDateFormatter.swift in Sources */,
 				BAC28EE04D97A05E95892AB5 /* CerealKeyTransform.swift in Sources */,
 				BAC28F4A5BF3D0634AF4BE96 /* CaseInsensitiveKeyTransform.swift in Sources */,
