@@ -7,6 +7,7 @@ import Foundation
 import CoreMeta
 
 public protocol CerealKeyTransform {
+    
     func transformKey(string: String) -> String
 
     func propertyName(properties: Array<CMPropertyInfo>, forKey: String) -> String?

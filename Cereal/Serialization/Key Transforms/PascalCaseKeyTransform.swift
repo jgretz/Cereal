@@ -7,6 +7,9 @@ import Foundation
 import CoreMeta
 
 public class PascalCaseKeyTransform: CerealKeyTransform {
+    
+    public init() {}
+    
     public func transformKey(string: String) -> String {
         let index = string.startIndex.advancedBy(1)
 

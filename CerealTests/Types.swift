@@ -14,6 +14,7 @@ class Flower:NSObject,Cerealizable {
     var color:String?
     var planted:NSDate?
     var petals:Array<Petal>?
+    var imageUrl: String?
 
     func shouldSerializeProperty(propertyName: String) -> Bool  {
         return true

@@ -7,6 +7,9 @@ import Foundation
 import CoreMeta
 
 public class CaseInsensitiveKeyTransform: CerealKeyTransform {
+    
+    public init() {}
+    
     public func transformKey(string: String) -> String {
         return string
     }

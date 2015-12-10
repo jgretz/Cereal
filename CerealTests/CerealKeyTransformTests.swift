@@ -22,4 +22,12 @@ class CerealKeyTransformTests : XCTestCase {
         XCTAssert(caseInsensitiveTransform.propertyName(properties, forKey: test) == "color", "Case Insensitive: not properly transforming string")
 
     }
+    
+    func testUnderscoreTransform() {
+        let transform = UnderscoreKeyTransform()
+        let test = "image_url"
+        let properties = CMTypeIntrospector(t: Flower.self).properties()
+        
+        XCTAssert(transform.propertyName(properties, forKey: test) == "imageUrl", "Underscore Key Transform: not properly transforming string")
+    }
 }
