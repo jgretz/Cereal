@@ -17,7 +17,7 @@ public class UnderscoreKeyTransform: CerealKeyTransform {
     }
     
     public func propertyName(properties: [CMPropertyInfo], forKey: String) -> String? {
-        return properties.first { transformKey($0.name) == forKey }?.name
+        return properties.first { transformKey($0.name) == forKey }?.name ?? forKey
     }
     
     private func prefixUppercaseWithUnderscore(c: Character) -> String {

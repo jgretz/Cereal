@@ -191,6 +191,11 @@ public class CerealizerBase: NSObject, Cerealizer {
                     continue
                 }
             }
+            
+            // ensure that key is a property on the object
+            if (!properties.contains { $0.name == key }) {
+                continue
+            }
 
             // parse
             if (value is Dictionary<String, AnyObject>) {

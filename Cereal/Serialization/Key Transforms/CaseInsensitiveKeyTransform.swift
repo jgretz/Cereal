@@ -16,6 +16,6 @@ public class CaseInsensitiveKeyTransform: CerealKeyTransform {
 
     public func propertyName(properties: Array<CMPropertyInfo>, forKey: String) -> String? {
         let property = properties.filter({ (p: CMPropertyInfo) in p.name.compare(forKey, options: NSStringCompareOptions.CaseInsensitiveSearch) == NSComparisonResult(rawValue: 0) })
-        return property.count == 0 ? nil : property[0].name
+        return property.count == 0 ? forKey : property[0].name
     }
 }
