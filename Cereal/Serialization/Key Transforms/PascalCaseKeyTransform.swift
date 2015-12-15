@@ -18,6 +18,6 @@ public class PascalCaseKeyTransform: CerealKeyTransform {
 
     public func propertyName(properties: Array<CMPropertyInfo>, forKey: String) -> String? {
         let potential = self.transformKey(forKey)
-        return properties.any({ $0.name == potential }) ? potential : nil
+        return properties.any({ $0.name == potential }) ? potential : forKey
     }
 }

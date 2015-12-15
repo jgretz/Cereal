@@ -18,6 +18,10 @@ public protocol Decerealizable {
 
 public extension Decerealizable {
     
+    func typeFor(propertyName: String, value: AnyObject?) -> AnyClass? {
+        return nil
+    }
+    
     func shouldDeserializeProperty(propertyName: String) -> Bool {
         return true
     }
