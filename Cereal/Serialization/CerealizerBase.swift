@@ -150,6 +150,11 @@ public class CerealizerBase: NSObject, Cerealizer {
             return array
         } else if (fromObject is Dictionary<String, NSObject>) {
             let obj = NSObject.objectForType(type)
+            
+            if obj is NSDictionary {
+                return fromObject
+            }
+            
             fillObject(obj, data: fromObject as! Dictionary<String, NSObject>)
 
             return obj
