@@ -46,7 +46,7 @@ public class CerealizerBase: NSObject, Cerealizer {
 
         let properties = CMTypeIntrospector(t: obj.dynamicType).properties()
         for property in properties {
-            let key = self.serializeKeyTransform == nil ? property.name : self.serializeKeyTransform!.transformKey(property.name)
+            let key = self.serializeKeyTransform?.transformKey(property.name) ?? property.name
             
             if (obj is Cerealizable) {
                 let cerealizable = obj as! Cerealizable
