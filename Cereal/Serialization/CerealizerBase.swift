@@ -46,6 +46,8 @@ public class CerealizerBase: NSObject, Cerealizer {
 
         let properties = CMTypeIntrospector(t: obj.dynamicType).properties()
         for property in properties {
+            let key = self.serializeKeyTransform == nil ? property.name : self.serializeKeyTransform!.transformKey(property.name)
+            
             if (obj is Cerealizable) {
                 let cerealizable = obj as! Cerealizable
                 if (!cerealizable.shouldSerializeProperty(property.name)) {
@@ -53,7 +55,7 @@ public class CerealizerBase: NSObject, Cerealizer {
                 }
 
                 if (cerealizable.overrideSerializeProperty(property.name)) {
-                    bag[property.name] = cerealizable.serializeProperty(property.name)
+                    bag[key] = cerealizable.serializeProperty(property.name)
                     continue
                 }
             }
@@ -63,7 +65,6 @@ public class CerealizerBase: NSObject, Cerealizer {
                 continue
             }
 
-            let key = self.serializeKeyTransform == nil ? property.name : self.serializeKeyTransform!.transformKey(property.name)
             bag[key] = serializeValue(value!)
         }
 
