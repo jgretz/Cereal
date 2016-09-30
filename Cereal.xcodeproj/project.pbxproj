@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		498639621C19C4E100DBBF29 /* UnderscoreKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */; };
 		4986396C1C19FFE800DBBF29 /* UnderscoreKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */; };
+		8C299AF71D9DF0F000B9E45E /* CoreMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C299AF21D9DF0D300B9E45E /* CoreMeta.framework */; };
 		8CE5F4E11BE40D140049E0C7 /* Cereal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CE5F4E01BE40D140049E0C7 /* Cereal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CE5F4E81BE40D140049E0C7 /* Cereal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */; };
 		8CE5F4ED1BE40D140049E0C7 /* JsonCerealizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */; };
-		8CE881711BE6B96900D21D8A /* CoreMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE881701BE6B96900D21D8A /* CoreMeta.framework */; };
 		BAC28019FB3F6CDFF1D72790 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2801E318E9817DD978B81 /* Types.swift */; };
 		BAC28159191AB499C38CD128 /* Iso8601UtcDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC28AEA1A8987EB895ADEFC /* Iso8601UtcDateFormatter.swift */; };
 		BAC282776C20CDEFE333EE95 /* Cerealizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2876B91DACD69E7BCCB94 /* Cerealizer.swift */; };
@@ -40,6 +40,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8C299AF11D9DF0D300B9E45E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C299AEC1D9DF0D300B9E45E /* CoreMeta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CF2A9711BCF20D900FAA321;
+			remoteInfo = CoreMeta;
+		};
+		8C299AF31D9DF0D300B9E45E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C299AEC1D9DF0D300B9E45E /* CoreMeta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CF3322B1BD14B8A0026564F;
+			remoteInfo = CoreMetaTests;
+		};
+		8C299AF51D9DF0EB00B9E45E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C299AEC1D9DF0D300B9E45E /* CoreMeta.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CF2A9701BCF20D900FAA321;
+			remoteInfo = CoreMeta;
+		};
 		8CE5F4E91BE40D140049E0C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CE5F4D41BE40D140049E0C7 /* Project object */;
@@ -51,12 +72,12 @@
 
 /* Begin PBXFileReference section */
 		498639611C19C4E100DBBF29 /* UnderscoreKeyTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderscoreKeyTransform.swift; sourceTree = "<group>"; };
+		8C299AEC1D9DF0D300B9E45E /* CoreMeta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreMeta.xcodeproj; path = ../CoreMeta/CoreMeta/CoreMeta.xcodeproj; sourceTree = "<group>"; };
 		8CE5F4DD1BE40D140049E0C7 /* Cereal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cereal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE5F4E01BE40D140049E0C7 /* Cereal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cereal.h; sourceTree = "<group>"; };
 		8CE5F4E71BE40D140049E0C7 /* CerealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CerealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE5F4EC1BE40D140049E0C7 /* JsonCerealizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCerealizerTests.swift; sourceTree = "<group>"; };
 		8CE5F4EE1BE40D140049E0C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CE881701BE6B96900D21D8A /* CoreMeta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMeta.framework; path = "../CoreMeta/CoreMeta/build/Debug-iphoneos/CoreMeta.framework"; sourceTree = "<group>"; };
 		BAC2801E318E9817DD978B81 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BAC28108C4415B523619FB04 /* PascalCaseKeyTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PascalCaseKeyTransform.swift; sourceTree = "<group>"; };
 		BAC2815BF3AB4E773944D221 /* CerealizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CerealizerBase.swift; sourceTree = "<group>"; };
@@ -78,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CE881711BE6B96900D21D8A /* CoreMeta.framework in Frameworks */,
+				8C299AF71D9DF0F000B9E45E /* CoreMeta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,10 +114,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C299AED1D9DF0D300B9E45E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C299AF21D9DF0D300B9E45E /* CoreMeta.framework */,
+				8C299AF41D9DF0D300B9E45E /* CoreMetaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8CE5F4D31BE40D140049E0C7 = {
 			isa = PBXGroup;
 			children = (
-				8CE881701BE6B96900D21D8A /* CoreMeta.framework */,
+				8C299AEC1D9DF0D300B9E45E /* CoreMeta.xcodeproj */,
 				8CE5F4DF1BE40D140049E0C7 /* Cereal */,
 				8CE5F4EB1BE40D140049E0C7 /* CerealTests */,
 				8CE5F4DE1BE40D140049E0C7 /* Products */,
@@ -218,6 +248,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8C299AF61D9DF0EB00B9E45E /* PBXTargetDependency */,
 			);
 			name = Cereal;
 			productName = Cereal;
@@ -249,14 +280,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Truefit;
 				TargetAttributes = {
 					8CE5F4DC1BE40D140049E0C7 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
 					};
 					8CE5F4E61BE40D140049E0C7 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -270,6 +303,12 @@
 			mainGroup = 8CE5F4D31BE40D140049E0C7;
 			productRefGroup = 8CE5F4DE1BE40D140049E0C7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8C299AED1D9DF0D300B9E45E /* Products */;
+					ProjectRef = 8C299AEC1D9DF0D300B9E45E /* CoreMeta.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8CE5F4DC1BE40D140049E0C7 /* Cereal */,
@@ -277,6 +316,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8C299AF21D9DF0D300B9E45E /* CoreMeta.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CoreMeta.framework;
+			remoteRef = 8C299AF11D9DF0D300B9E45E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C299AF41D9DF0D300B9E45E /* CoreMetaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CoreMetaTests.xctest;
+			remoteRef = 8C299AF31D9DF0D300B9E45E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8CE5F4DB1BE40D140049E0C7 /* Resources */ = {
@@ -340,6 +396,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8C299AF61D9DF0EB00B9E45E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CoreMeta;
+			targetProxy = 8C299AF51D9DF0EB00B9E45E /* PBXContainerItemProxy */;
+		};
 		8CE5F4EA1BE40D140049E0C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8CE5F4DC1BE40D140049E0C7 /* Cereal */;
@@ -361,8 +422,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -385,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -409,8 +472,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -427,9 +492,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -440,52 +506,76 @@
 		8CE5F4F21BE40D140049E0C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Cereal/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truefit.Cereal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		8CE5F4F31BE40D140049E0C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Cereal/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truefit.Cereal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		8CE5F4F51BE40D140049E0C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CerealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truefit.CerealTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		8CE5F4F61BE40D140049E0C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CerealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truefit.CerealTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

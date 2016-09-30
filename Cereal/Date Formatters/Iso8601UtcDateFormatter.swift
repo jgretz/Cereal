@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class Iso8601UtcDateFormatter : NSDateFormatter {
+open class Iso8601UtcDateFormatter : DateFormatter {
     public override init() {
         super.init()
 
@@ -18,18 +18,19 @@ public class Iso8601UtcDateFormatter : NSDateFormatter {
         self.setFormats()
     }
 
-    private func setFormats() {
-        self.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        self.timeZone = NSTimeZone(abbreviation: "UTC")
+    fileprivate func setFormats() {
+        self.locale = Locale(identifier: "en_US_POSIX")
+        self.timeZone = TimeZone(abbreviation: "UTC")
         self.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSSSS'Z'"
     }
 
-    public override func dateFromString(var string:String) -> NSDate? {
+    open override func date(from string:String) -> Date? {
+        var string = string
         // Handle dates with or without the MS portion
-        if (string.componentsSeparatedByString(".").count == 1) {
-            string = string.stringByAppendingString(".00000")
+        if (string.components(separatedBy: ".").count == 1) {
+            string = string + ".00000"
         }
 
-        return super.dateFromString(string)
+        return super.date(from: string)
     }
 }

@@ -8,22 +8,22 @@
 
 import CoreMeta
 
-public class UnderscoreKeyTransform: CerealKeyTransform {
+open class UnderscoreKeyTransform: CerealKeyTransform {
     
     public init() {}
     
-    public func transformKey(string: String) -> String {
-        return string.characters.map(prefixUppercaseWithUnderscore).joinWithSeparator("")
+    open func transformKey(_ string: String) -> String {
+        return string.characters.map(prefixUppercaseWithUnderscore).joined(separator: "")
     }
     
-    public func propertyName(properties: [CMPropertyInfo], forKey: String) -> String? {
+    open func propertyName(_ properties: [CMPropertyInfo], forKey: String) -> String? {
         return properties.first { transformKey($0.name) == forKey }?.name ?? forKey
     }
     
-    private func prefixUppercaseWithUnderscore(c: Character) -> String {
+    fileprivate func prefixUppercaseWithUnderscore(_ c: Character) -> String {
         let s = String(c)
-        return s.rangeOfString("[A-Z]", options: .RegularExpressionSearch) != nil
-            ? "_\(s.lowercaseString)"
+        return s.range(of: "[A-Z]", options: .regularExpression) != nil
+            ? "_\(s.lowercased())"
             : s
     }
 }

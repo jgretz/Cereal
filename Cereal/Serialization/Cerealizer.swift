@@ -6,13 +6,13 @@
 import Foundation
 
 @objc public protocol Cerealizer {
-    var dateFormatter:NSDateFormatter! {get set}
+    var dateFormatter:DateFormatter! {get set}
 
-    func toString(obj:AnyObject?)->String
+    func toString(_ obj:AnyObject?)->String
 
-    func toPropertyBag(obj:NSObject?)->Dictionary<String,AnyObject>
-    func toArrayOfPropertyBags(obj:Array<NSObject>)->Array<Dictionary<String,AnyObject>>
+    func toPropertyBag(_ obj:NSObject?)->Dictionary<String,AnyObject>
+    func toArrayOfPropertyBags(_ obj:Array<NSObject>)->Array<Dictionary<String,AnyObject>>
 
-    func create(type:AnyClass, fromString:String)->AnyObject?
-    func create(type:AnyClass, fromObject:AnyObject) -> AnyObject?
+    func create(_ type:AnyClass, fromString:String)->AnyObject?
+    func create(_ type:AnyClass, fromObject:AnyObject) -> AnyObject?
 }

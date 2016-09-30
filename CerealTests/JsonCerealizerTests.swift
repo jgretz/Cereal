@@ -20,11 +20,11 @@ class JsonCerealizerTests: XCTestCase {
         flower = Flower()
         flower.color = "red"
         flower.type = "rose"
-        flower.planted = NSDate(timeIntervalSince1970: 0)
+        flower.planted = Date(timeIntervalSince1970: 0)
         flower.petals = [ Petal(color: "Red"), Petal(color: "Pink"), Petal(color: "White") ]
 
-        flowerJson = "{\"petals\":[{\"color\":\"Red\"},{\"color\":\"Pink\"},{\"color\":\"White\"}],\"type\":\"rose\",\"color\":\"red\",\"planted\":\"1969-12-31 19:00:00\"}"
-        dictionaryFlowerJson = "{\"flower\":\(flowerJson),\"another\":\"string\"}"
+        flowerJson = "{\"planted\":\"1969-12-31 19:00:00\",\"type\":\"rose\",\"petals\":[{\"color\":\"Red\"},{\"color\":\"Pink\"},{\"color\":\"White\"}],\"color\":\"red\"}"
+        dictionaryFlowerJson = "{\"flower\":{\"planted\":\"1969-12-31 19:00:00\",\"type\":\"rose\",\"petals\":[{\"color\":\"Red\"},{\"color\":\"Pink\"},{\"color\":\"White\"}],\"color\":\"red\"},\"another\":\"string\"}"
     }
 
     //***********
@@ -42,13 +42,13 @@ class JsonCerealizerTests: XCTestCase {
     }
 
     func testToStringShouldReturnAnEmptyArrayStringForAnEmptyArray() {
-        let json = serializer.toString([])
+        let json = serializer.toString([] as AnyObject)
         XCTAssert(json == "[]", "Json Cerealizer: empty array serialization not returning an empty array")
     }
 
     func testToStringShouldReturnAString() {
         let json = serializer.toString(flower)
-        XCTAssert(json.dynamicType == String.self, "Json Cerealizer: serialization not returning a string")
+        XCTAssert(type(of: json) == String.self, "Json Cerealizer: serialization not returning a string")
     }
 
     func testToStringShouldReturnProperString() {
@@ -60,9 +60,9 @@ class JsonCerealizerTests: XCTestCase {
         let dict = [
             "flower": flower,
             "another": "string"
-        ]
+        ] as [String : Any]
         
-        let json = serializer.toString(dict)
+        let json = serializer.toString(dict as AnyObject)
         XCTAssert(json == dictionaryFlowerJson, "Json Cerealizer: serialization not returning proper string")
     }
 

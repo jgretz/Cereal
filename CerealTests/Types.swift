@@ -12,43 +12,43 @@ class Tree {
 class Flower:NSObject,Cerealizable {
     var type:String?
     var color:String?
-    var planted:NSDate?
+    var planted:Date?
     var petals:Array<Petal>?
     var imageUrl: String?
 
-    func shouldSerializeProperty(propertyName: String) -> Bool  {
+    func shouldSerializeProperty(_ propertyName: String) -> Bool  {
         return true
     }
 
-    func overrideSerializeProperty(propertyName: String) -> Bool {
+    func overrideSerializeProperty(_ propertyName: String) -> Bool {
         return false
     }
 
-    func serializeProperty(propertyName: String) -> AnyObject? {
+    func serializeProperty(_ propertyName: String) -> AnyObject? {
         return nil
     }
 
-    func shouldDeserializeProperty(propertyName: String) -> Bool {
+    func shouldDeserializeProperty(_ propertyName: String) -> Bool {
         return true
     }
 
-    func typeFor(propertyName: String, value: AnyObject?) -> AnyClass {
+    func typeFor(_ propertyName: String, value: AnyObject?) -> AnyClass {
         if (propertyName == "petals") {
             return Petal.self
         }
 
         if (value != nil) {
-            return value!.dynamicType
+            return type(of: value!)
         }
 
         return NSObject.self
     }
 
-    func overrideDeserializeProperty(propertyName: String, value: AnyObject?) -> Bool {
+    func overrideDeserializeProperty(_ propertyName: String, value: AnyObject?) -> Bool {
         return false
     }
 
-    func deserializeProperty(propertyName: String, value: AnyObject?) {
+    func deserializeProperty(_ propertyName: String, value: AnyObject?) {
     }
 }
 

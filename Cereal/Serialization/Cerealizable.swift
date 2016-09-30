@@ -6,9 +6,9 @@
 import Foundation
 
 public protocol Cerealizable {
-    func shouldSerializeProperty(propertyName: String) -> Bool
+    func shouldSerializeProperty(_ propertyName: String) -> Bool
 
-    func overrideSerializeProperty(propertyName: String) -> Bool
+    func overrideSerializeProperty(_ propertyName: String) -> Bool
 
-    func serializeProperty(propertyName: String) -> AnyObject?
+    func serializeProperty(_ propertyName: String) -> AnyObject?
 }

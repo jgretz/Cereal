@@ -7,30 +7,30 @@ import Foundation
 
 public protocol Decerealizable {
     
-    func typeFor(propertyName: String, value: AnyObject?) -> AnyClass?
+    func typeFor(_ propertyName: String, value: AnyObject?) -> AnyClass?
 
-    func shouldDeserializeProperty(propertyName: String) -> Bool
+    func shouldDeserializeProperty(_ propertyName: String) -> Bool
 
-    func overrideDeserializeProperty(propertyName: String, value: AnyObject?) -> Bool
+    func overrideDeserializeProperty(_ propertyName: String, value: AnyObject?) -> Bool
 
-    func deserializeProperty(propertyName: String, value: AnyObject?)
+    func deserializeProperty(_ propertyName: String, value: AnyObject?)
 }
 
 public extension Decerealizable {
     
-    func typeFor(propertyName: String, value: AnyObject?) -> AnyClass? {
+    func typeFor(_ propertyName: String, value: AnyObject?) -> AnyClass? {
         return nil
     }
     
-    func shouldDeserializeProperty(propertyName: String) -> Bool {
+    func shouldDeserializeProperty(_ propertyName: String) -> Bool {
         return true
     }
     
-    func overrideDeserializeProperty(propertyName: String, value: AnyObject?) -> Bool {
+    func overrideDeserializeProperty(_ propertyName: String, value: AnyObject?) -> Bool {
         return false
     }
     
-    func deserializeProperty(propertyName: String, value: AnyObject?) {
+    func deserializeProperty(_ propertyName: String, value: AnyObject?) {
 
     }
 }

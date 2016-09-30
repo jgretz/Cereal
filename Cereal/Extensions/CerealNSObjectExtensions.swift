@@ -12,13 +12,13 @@ extension NSObject {
         return cerializer.toString(self)
     }
 
-    class func fromJson<T>(json:String) -> T {
+    class func fromJson<T>(_ json:String) -> T {
         let cerializer:JsonCerealizer = JsonCerealizer.object()
         return cerializer.create(self, fromString: json) as! T
     }
 
     func toPropertyBag() -> AnyObject {
         let cerializer:JsonCerealizer = JsonCerealizer.object()
-        return cerializer.toPropertyBag(self)
+        return cerializer.toPropertyBag(self) as AnyObject
     }
 }

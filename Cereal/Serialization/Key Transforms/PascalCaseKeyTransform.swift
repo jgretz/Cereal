@@ -6,17 +6,17 @@
 import Foundation
 import CoreMeta
 
-public class PascalCaseKeyTransform: CerealKeyTransform {
+open class PascalCaseKeyTransform: CerealKeyTransform {
     
     public init() {}
     
-    public func transformKey(string: String) -> String {
-        let index = string.startIndex.advancedBy(1)
-
-        return string.substringToIndex(index).uppercaseString.stringByAppendingString(string.substringFromIndex(index))
+    open func transformKey(_ string: String) -> String {
+        let index = string.characters.index(string.startIndex, offsetBy: 1)
+        
+        return string.substring(to: index).uppercased() + string.substring(from: index)
     }
 
-    public func propertyName(properties: Array<CMPropertyInfo>, forKey: String) -> String? {
+    open func propertyName(_ properties: Array<CMPropertyInfo>, forKey: String) -> String? {
         let potential = self.transformKey(forKey)
         return properties.any({ $0.name == potential }) ? potential : forKey
     }

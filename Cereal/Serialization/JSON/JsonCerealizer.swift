@@ -5,22 +5,22 @@
 
 import Foundation
 
-public class JsonCerealizer : CerealizerBase {
-    public override func toString(obj:AnyObject?)->String {
+open class JsonCerealizer : CerealizerBase {
+    open override func toString(_ obj:AnyObject?)->String {
         var object:AnyObject
         if (obj is Array<NSObject>) {
-            object = self.toArrayOfPropertyBags(obj as! Array<NSObject>)
+            object = self.toArrayOfPropertyBags(obj as! Array<NSObject>) as AnyObject
         }
         else if (obj is NSObject) {
-            object = self.toPropertyBag(obj as? NSObject)
+            object = self.toPropertyBag(obj as? NSObject) as AnyObject
         }
         else {
             return ""
         }
 
         do {
-            let data = try NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions(rawValue: 0))
-            return String(data: data, encoding: NSUTF8StringEncoding) ?? ""
+            let data = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions(rawValue: 0))
+            return String(data: data, encoding: String.Encoding.utf8) ?? ""
         }
         catch {
             NSLog("Error Serializing Object")
@@ -28,15 +28,15 @@ public class JsonCerealizer : CerealizerBase {
         }
     }
 
-    public override func create(type:AnyClass, fromString:String)->AnyObject? {
-        let data = fromString.dataUsingEncoding(NSUTF8StringEncoding)
+    open override func create(_ type:AnyClass, fromString:String)->AnyObject? {
+        let data = fromString.data(using: String.Encoding.utf8)
         if (data == nil) {
             return nil
         }
 
         do {
-            let jsonObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
-            return create(type, fromObject: jsonObj)
+            let jsonObj = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+            return create(type, fromObject: jsonObj as AnyObject)
         }
         catch {
             if (!fromString.isEmpty) {

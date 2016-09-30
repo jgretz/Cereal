@@ -5,34 +5,44 @@
 
 import Foundation
 
-public class MicrosoftJsonDateFormatter: NSDateFormatter {
-    public override func dateFromString(string:String) -> NSDate? {
+open class MicrosoftJsonDateFormatter: DateFormatter {
+    open override func date(from string:String) -> Date? {
         if (string.characters.count == 0) {
             return nil
         }
 
         // Remove escape characters and the Date() text from the raw JSON date string.
-        let startIndex = string.rangeOfString("(")!.startIndex
-        let endIndex = string.rangeOfString(")")!.startIndex
-        var datePart = string.substringWithRange(Range(start: startIndex, end: endIndex))
+        let startIndex = string.range(of: "(")!.lowerBound
+        let endIndex = string.range(of: ")")!.lowerBound
+        var datePart = string.substring(with: (startIndex ..< endIndex))
 
         // Determine if the UTC portion is present and extract it and the direction.
-        let plusRange = datePart.rangeOfString("+")
-        let minusRange = datePart.rangeOfString("-")
+        let plusRange = datePart.range(of: "+")
+        let minusRange = datePart.range(of: "-")
 
         // Default the values as if the UTC portion does not exist.
         var timeZoneHoursPart = "00"
         var timeZoneMinutesPart = "00"
         var timeZoneMultiplier = 0
-
+        
         if (plusRange != nil || minusRange != nil) {
             timeZoneMultiplier = plusRange != nil ? 1 : -1
-
+            
             let range = plusRange != nil ? plusRange! : minusRange!
-            timeZoneHoursPart = datePart.substringWithRange(Range(start: range.startIndex.advancedBy(1), end: range.startIndex.advancedBy(3)))
-            timeZoneMinutesPart = datePart.substringWithRange(Range(start: range.startIndex.advancedBy(3), end: range.startIndex.advancedBy(5)))
-
-            datePart = datePart.substringToIndex(range.startIndex)
+            
+            let hoursStart = string.index(range.lowerBound, offsetBy: 1)
+            let hoursEnd = string.index(range.lowerBound, offsetBy: 3)
+            let hoursRange = hoursStart ..< hoursEnd;
+            
+            timeZoneHoursPart = datePart.substring(with: hoursRange)
+            
+            let minutesStart = string.index(range.lowerBound, offsetBy: 3)
+            let minutesEnd = string.index(range.lowerBound, offsetBy: 5)
+            let minutesRange = minutesStart ..< minutesEnd;
+            
+            timeZoneMinutesPart = datePart.substring(with: minutesRange)
+            
+            datePart = datePart.substring(to: range.lowerBound)
         }
 
         // Convert the parts.
@@ -41,10 +51,10 @@ public class MicrosoftJsonDateFormatter: NSDateFormatter {
         let offsetMinutes = Float(timeZoneMinutesPart)! * 60.0 * Float(timeZoneMultiplier)
 
         // create the date
-        return NSDate(timeIntervalSince1970: NSTimeInterval(time + offsetHours + offsetMinutes))
+        return Date(timeIntervalSince1970: TimeInterval(time + offsetHours + offsetMinutes))
     }
 
-    public override func stringFromDate(date:NSDate) -> String {
+    open override func string(from date:Date) -> String {
         return String(format: "/Date{%llu}/", date.timeIntervalSince1970 * 1000)
     }
 }

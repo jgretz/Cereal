@@ -6,16 +6,16 @@
 import Foundation
 import CoreMeta
 
-public class CaseInsensitiveKeyTransform: CerealKeyTransform {
+open class CaseInsensitiveKeyTransform: CerealKeyTransform {
     
     public init() {}
     
-    public func transformKey(string: String) -> String {
+    open func transformKey(_ string: String) -> String {
         return string
     }
 
-    public func propertyName(properties: Array<CMPropertyInfo>, forKey: String) -> String? {
-        let property = properties.filter({ (p: CMPropertyInfo) in p.name.compare(forKey, options: NSStringCompareOptions.CaseInsensitiveSearch) == NSComparisonResult(rawValue: 0) })
+    open func propertyName(_ properties: Array<CMPropertyInfo>, forKey: String) -> String? {
+        let property = properties.filter({ (p: CMPropertyInfo) in p.name.compare(forKey, options: NSString.CompareOptions.caseInsensitive) == ComparisonResult(rawValue: 0) })
         return property.count == 0 ? forKey : property[0].name
     }
 }

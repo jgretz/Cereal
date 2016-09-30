@@ -6,13 +6,13 @@
 import Foundation
 import CoreMeta
 
-public class CerealizerBase: NSObject, Cerealizer {
-    public var dateFormatter: NSDateFormatter!
-    public var serializeKeyTransform: CerealKeyTransform?
-    public var deserializeKeyTransform: CerealKeyTransform?
+open class CerealizerBase: NSObject, Cerealizer {
+    open var dateFormatter: DateFormatter!
+    open var serializeKeyTransform: CerealKeyTransform?
+    open var deserializeKeyTransform: CerealKeyTransform?
 
     public override init() {
-        self.dateFormatter = NSDateFormatter()
+        self.dateFormatter = DateFormatter()
         self.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         self.deserializeKeyTransform = CaseInsensitiveKeyTransform()
@@ -22,11 +22,11 @@ public class CerealizerBase: NSObject, Cerealizer {
     // Serialize
     //***********
 
-    public func toString(obj: AnyObject?) -> String {
+    open func toString(_ obj: AnyObject?) -> String {
         return ""
     }
 
-    public func toArrayOfPropertyBags(array: Array<NSObject>) -> Array<Dictionary<String, AnyObject>> {
+    open func toArrayOfPropertyBags(_ array: Array<NSObject>) -> Array<Dictionary<String, AnyObject>> {
         var returnArray = Array<Dictionary<String, AnyObject>>()
         for obj in array {
             returnArray.append(self.toPropertyBag(obj))
@@ -35,7 +35,7 @@ public class CerealizerBase: NSObject, Cerealizer {
         return returnArray
     }
 
-    public func toPropertyBag(obj: NSObject?) -> Dictionary<String, AnyObject> {
+    open func toPropertyBag(_ obj: NSObject?) -> Dictionary<String, AnyObject> {
         var bag = Dictionary<String, AnyObject>()
         guard let obj = obj
             else { return bag }
@@ -44,7 +44,7 @@ public class CerealizerBase: NSObject, Cerealizer {
             return serializeValue(obj) as! Dictionary<String, AnyObject>
         }
 
-        let properties = CMTypeIntrospector(t: obj.dynamicType).properties()
+        let properties = CMTypeIntrospector(t: type(of: obj)).properties()
         for property in properties {
             let key = self.serializeKeyTransform?.transformKey(property.name) ?? property.name
             
@@ -60,42 +60,42 @@ public class CerealizerBase: NSObject, Cerealizer {
                 }
             }
 
-            let value = obj.valueForKey(property.name)
+            let value = obj.value(forKey: property.name)
             if (value == nil) {
                 continue
             }
 
-            bag[key] = serializeValue(value!)
+            bag[key] = serializeValue(value! as AnyObject)
         }
 
         return bag
     }
 
-    internal func serializeValue(value: AnyObject) -> AnyObject {
+    internal func serializeValue(_ value: AnyObject) -> AnyObject {
         // handle straight return cases
         if (value is String || value is NSNumber) {
             return value
         }
 
         if (value is NSValue) {
-            return NSKeyedArchiver.archivedDataWithRootObject(value).base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+            return NSKeyedArchiver.archivedData(withRootObject: value).base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) as AnyObject
         }
 
-        if (value is NSDate) {
-            return self.dateFormatter.stringFromDate(value as! NSDate)
+        if (value is Date) {
+            return self.dateFormatter.string(from: value as! Date) as AnyObject
         }
 
-        if (value is NSUUID) {
-            return (value as! NSUUID).UUIDString
+        if (value is UUID) {
+            return (value as! UUID).uuidString as AnyObject
         }
 
-        if (value is NSData) {
-            return (value as! NSData).base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        if (value is Data) {
+            return (value as! Data).base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) as AnyObject
         }
 
         // collection types
         if (value is Array<NSObject>) {
-            return self.toArrayOfPropertyBags(value as! Array<NSObject>)
+            return self.toArrayOfPropertyBags(value as! Array<NSObject>) as AnyObject
         }
 
         if let sourceDict = value as? [String: NSObject] {
@@ -106,22 +106,22 @@ public class CerealizerBase: NSObject, Cerealizer {
                 }
             }
 
-            return returnDict
+            return returnDict as AnyObject
         }
 
         if (value is Set<NSObject>) {
             let sourceSet = value as! Set<NSObject>
             var returnArray = Array<NSObject>()
             for sourceItem in sourceSet {
-                returnArray.append(self.toPropertyBag(sourceItem))
+                returnArray.append(self.toPropertyBag(sourceItem) as NSObject)
             }
 
-            return returnArray
+            return returnArray as AnyObject
         }
 
         // object type
         if (value is NSObject) {
-            return self.toPropertyBag(value as? NSObject)
+            return self.toPropertyBag(value as? NSObject) as AnyObject
         }
 
         // default
@@ -132,11 +132,11 @@ public class CerealizerBase: NSObject, Cerealizer {
     // Deserialize
     //*************
 
-    public func create(type: AnyClass, fromString: String) -> AnyObject? {
+    open func create(_ type: AnyClass, fromString: String) -> AnyObject? {
         return nil
     }
 
-    public func create(type: AnyClass, fromObject: AnyObject) -> AnyObject? {
+    open func create(_ type: AnyClass, fromObject: AnyObject) -> AnyObject? {
         if (fromObject is Array<Dictionary<String, NSObject>>) {
             let dataArray: Array<Dictionary<String, NSObject>> = fromObject as! Array<Dictionary<String, NSObject>>
 
@@ -148,7 +148,7 @@ public class CerealizerBase: NSObject, Cerealizer {
                 array.append(obj)
             }
 
-            return array
+            return array as AnyObject?
         } else if (fromObject is Dictionary<String, NSObject>) {
             let obj = NSObject.objectForType(type)
             
@@ -164,8 +164,8 @@ public class CerealizerBase: NSObject, Cerealizer {
         return nil
     }
 
-    internal func fillObject(obj: NSObject, data: Dictionary<String, AnyObject>) {
-        let properties = CMTypeIntrospector(t: obj.dynamicType).properties()
+    internal func fillObject(_ obj: NSObject, data: Dictionary<String, AnyObject>) {
+        let properties = CMTypeIntrospector(t: type(of: obj)).properties()
 
         for dataKey in data.keys {
             // if we dont have a value, not sure how we are here, but protection
@@ -225,14 +225,14 @@ public class CerealizerBase: NSObject, Cerealizer {
                         }
                     }
 
-                    value = targetArray
+                    value = targetArray as AnyObject?
                 }
             } else {
                 let item = deserializeValue(obj, properties: properties, propertyName: key, value: value!)
                 if (item == nil) {
                     continue
                 }
-                value = item!
+                value = item! as AnyObject!
             }
 
             if (value == nil || value is NSNull) {
@@ -243,7 +243,7 @@ public class CerealizerBase: NSObject, Cerealizer {
         }
     }
 
-    internal func deserializeValue(obj: NSObject, properties: Array<CMPropertyInfo>, propertyName: String, value: AnyObject) -> AnyObject? {
+    internal func deserializeValue(_ obj: NSObject, properties: Array<CMPropertyInfo>, propertyName: String, value: AnyObject) -> Any? {
         if (!(value is String)) {
             return value
         }
@@ -253,22 +253,22 @@ public class CerealizerBase: NSObject, Cerealizer {
         let property = properties.first({ $0.name == propertyName })!
         let type: AnyClass = NSClassFromString(property.typeInfo.name)!
 
-        if (type == NSData.self) {
-            return stringValue.dataUsingEncoding(NSUTF8StringEncoding)
+        if (type == Data.self || type == Data?.self || type == NSData.self) {
+            return stringValue.data(using: String.Encoding.utf8, allowLossyConversion: false)
         }
 
-        if (type == NSDate.self) {
-            return self.dateFormatter.dateFromString(stringValue)
+        if (type == Date.self || type == Date?.self || type == NSDate.self) {
+            return self.dateFormatter.date(from: stringValue)
         }
 
-        if (type == NSUUID.self) {
-            return NSUUID(UUIDString: stringValue)
+        if (type == UUID.self) {
+            return NSUUID(uuidString: stringValue)
         }
 
         if (type == NSValue.self) {
-            let data = stringValue.dataUsingEncoding(NSUTF8StringEncoding)
+            let data = stringValue.data(using: String.Encoding.utf8)
             if (data != nil) {
-                return NSKeyedUnarchiver.unarchiveObjectWithData(data!)
+                return NSKeyedUnarchiver.unarchiveObject(with: data!)
             }
             return nil
         }
