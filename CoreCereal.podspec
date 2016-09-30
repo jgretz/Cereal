@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name            = "CoreCereal"
-  s.version         = "2.0.0"
+  s.version         = "2.0.1"
   s.summary         = "A lightweight serialization framework written in Swift."
   s.description     = "For more information, please visit http://gretzlab.com/lab/cereal"
 
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '9.0'
   s.requires_arc = true
 
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
   s.source_files = 'Cereal/**/*.{swift}'
 
   s.dependency 'CoreMeta'
