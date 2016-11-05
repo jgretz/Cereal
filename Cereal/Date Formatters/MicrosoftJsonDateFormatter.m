@@ -63,7 +63,7 @@
 }
 
 - (NSString*)stringFromDate:(NSDate *)date {
-    return [NSString stringWithFormat:@"/Date{%llu}/", (unsigned long long)[date timeIntervalSince1970] * 1000];
+    return [NSString stringWithFormat:@"/Date(%llu)/", (unsigned long long)[date timeIntervalSince1970] * 1000];
 }
 
 @end
